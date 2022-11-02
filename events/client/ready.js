@@ -10,10 +10,8 @@ module.exports = {
 
         client.user.setPresence({ activities: [{ name: `VSCODE `, type: 'WATCHING' }], status: 'dnd' });
 
-        //const devGuild = await client.guilds.cache.get('1034410084631064577');
-        //devGuild.commands.set(client.commands.map(cmd => cmd));
-        // Slash commands sur serveur = instantané
-        // Slash commands en global = 1h
-        client.application.commands.set(client.commands.map(cmd => cmd));
+        const devGuild = await client.guilds.cache.get('1034410084631064577');
+        devGuild.commands.set(client.commands.map(cmd => cmd));
+        //client.application.commands.set(client.commands.map(cmd => cmd));
     },
 };

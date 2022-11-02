@@ -10,11 +10,6 @@ module.exports = {
             type: 'MEMBER_KICK'
          });
 
-         const kickLog = fetchKickLog.entries.first();
-         const { target, reason } = kickLog;
-         let isMemberKick = false;
-
-         if (target.id === member.id) isMemberKick = true;
 
         const embed = new MessageEmbed()
         .setAuthor({name: `${member.user.tag} (${member.id})`, IconURL: member.user.displayAvatarURL() })
@@ -22,13 +17,11 @@ module.exports = {
         .setDescription(`● Nom d'utilisateur: ${member.displayName}
         ● Crée le : <t:${parseInt(member.user.createdTimestamp / 1000)}:f> (<t:${parseInt(member.user.createdTimestamp / 1000)}:R>)
         ● Rejoint le : <t:${parseInt(member.joinedTimestamp / 1000)}:f> (<t:${parseInt(member.joinedTimestamp / 1000)}:R>)
-        ● Quitté le : <t:${parseInt(Date.now() / 1000)}:f> (<t:${parseInt(Date.now() / 1000)}:R>)
-        ● Kick ?: ${isMemberKick ? `🟢 (raison: ${reason})` : '🔴' }
-        `)
+        ● Quitté le : <t:${parseInt(Date.now() / 1000)}:f> (<t:${parseInt(Date.now() / 1000)}:R>)`)
         .setTimestamp()
         .setFooter({text: 'L\'utilisateur a quitté !'  });
 
-        const logChannel = client.channels.cache.get(fetchGuild.testChannel);
+        const logChannel = client.channels.cache.get(fetchGuild.logChannel);
         logChannel.send({ embeds: [embed] });
     }
 };

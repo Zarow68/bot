@@ -25,14 +25,6 @@ module.exports = {
                 return message.reply({ content: `Nouvelle Valeur de logChannel : ${value}`})
             }
             message.reply({ content: `Valeur de logChannel : ${guildSettings.logChannel}`})
-        } else if (key == 'testChannel') {
-            if (value) {
-                await client.updateGuild(message.guild, { testChannel: value });
-                return message.reply({ content: `Nouvelle Valeur de testChannel : ${value}`})
-            }
-            message.reply({ content: `Valeur de testChannel : ${guildSettings.testChannel}`})
-            
-
         }
     },
     options: [
@@ -50,15 +42,11 @@ module.exports = {
                     name: 'logChannel',
                     value: 'logChannel'
                 },
-                {
-                    name: 'testChannel',
-                    value: 'testChannel'
-                },
             ]
         },
         {
             name: 'value',
-            description: 'Choisir la nouvelle valeur pour votre clé',
+            description: 'Choisir la nouvelle valeur pour votre clééé',
             type: 'STRING',
         },
 
@@ -79,12 +67,6 @@ module.exports = {
                 return interaction.reply({ content: `Nouvelle valeur de logChannel: ${value}`});
             }
             interaction.reply({ content: `Valeur de préfix: ${guildSettings.logChannel}`});
-        } else if (key == "testChannel") {
-            if (value) {
-                await client.updateGuild(interaction.guild, { testChannel: value});
-                return interaction.reply({ content: `Nouvelle valeur de testChannel: ${value}`});
-            }
-            interaction.reply({ content: `Valeur de testChannel: ${guildSettings.testChannel}`});
         }
          
     }
