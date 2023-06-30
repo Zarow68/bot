@@ -8,23 +8,7 @@ module.exports = {
     usage: 'mute [@member] [duration] [reason]',
     examples: ['mute @Zarow 4 minutes raison'],
     description: 'mute un utilisateur temorairement avec une raison !',
-    async run(client, message, args) {
-        if (!args[0]) return message.reply('Veuillez indiquer un member à mute !');
-        if (!args[1] || !args[2]) return message.reply('Spécifier une durée pour votre mute !');
-        if (!args[3]) return message.reply('Spécifier une raison à votre mute');
-
-        const target = message.mentions.members.find(m => m.id);
-        const duration = args.slice(1, 3).join(' ');
-        const convertedTime = ms(duration);
-        const reason = args.slice(2).join(' ');
-
-        if (!target.moderatable) return message.reply('Ce membre ne peut pas être mute par le bot !');
-        if (!convertedTime) return interaction.reply('Spécifier une durée valable !')
-
-
-        target.timeout(convertedTime, reason);
-        message.channel.send(`Le membre ${target} a été mute pour ${duration} car ${reason} !`)
-    },
+   
     options: [
         {
             name: 'member',
@@ -54,10 +38,10 @@ module.exports = {
         const convertedTime = ms(duration);
         const reason = interaction.options.getString('reason');
 
-        if (!target.moderatable) return interaction.reply('Ce membre ne peut pas être mute par le bot !');
-        if (!convertedTime) return interaction.reply('Spécifier une durée valable !')
+        if (!target.moderatable) return interaction.reply({ content: 'Ce membre ne peut pas être mute par le bot !', ephemeral: true});
+        if (!convertedTime) return interaction.reply({ content: 'Spécifier une durée valable !', ephemeral: true})
 
         target.timeout(convertedTime, reason);
-       interaction.reply(`Le membre ${target} a été mute pour ${duration} car ${reason} !`);
+       interaction.reply({content: `Le membre ${target} a été mute pour ${duration} car ${reason} !`, ephemeral: true});
     }
 };

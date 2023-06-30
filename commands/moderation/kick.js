@@ -8,50 +8,7 @@ module.exports = {
     usage: 'kick [@member] [reason]',
     examples: ['kick @Zarow raison'],
     description: 'Expulse un utilisateur avec une raison !',
-    async run(client, message, args, member, guildSettings) {
-    const target = message.mentions.members.find(m => m.id);
-    const reason = args.slice(1).join(' '); 
-
-        const UserKickEmbed = new MessageEmbed()
-        .setColor('#FF0000')
-        .setTitle('Commande : Kick')
-        .setDescription('<:bc_icon_users:1035666894289653850> Quel membre souhaitez vous **expulser** ?\n<:Discord_Mention:1035666020284764241> Mentionnez un **utilisateur** à kick !')  
-        const UserKickReasonEmbed = new MessageEmbed()
-        .setColor('#FF0000')
-        .setTitle('Commande : Kick')
-        .setDescription(`<:bc_icon_users:1035666894289653850> Pour quelle raison souhaitez-vous exclure ${target} ?\n<:bc_icon_users:1035666894289653850> Indiquez une **raison** de kick pour ${target} ? `)
-        const KICKABLE = new MessageEmbed()
-        .setColor('#FF0000')
-        .setTitle('Commande : Kick')
-        .setDescription(`<:Discord_Danger:1034472688242130965> ${target} ne peut pas être expulsé par le bot !`)
-        .setTimestamp()
-        
-   
-
-        if (!args[0]) return message.reply({ embeds: [UserKickEmbed]});
-        if (!args[1]) return message.reply({ embeds: [UserKickReasonEmbed]});
-
-        
-
-        if (!target.kickable) return message.reply({ embeds: [KICKABLE]});
-        const KICK = new MessageEmbed()
-        .setColor('#FF0000')
-        .setTitle('Commande : Kick')
-        .setDescription(`<:Discord_Danger:1034472688242130965> ${target} a été expulsé par le bot pour ${reason} !`)
-        target.kick(reason);
-        message.reply({ embeds: [KICK]})
-        const logs = new MessageEmbed()
-        .setColor('#FF0000')
-        .setTitle('Logs :  Kick')
-        .setDescription(`<:bc_icon_users:1035666894289653850> **${target}** a été expulsé par ${message.author} !`)
-        .addFields(
-            { name: 'Raison', value: `\`${reason}\``},
-        )
-        .setFooter({ text: `${message.guild.name}`})
-        .setTimestamp()
-        const logChannel = client.channels.cache.get(guildSettings.logChannel)
-        if (target.kickable) return logChannel.send({ embeds: [logs]});
-    },
+    
     options: [
         {
             name: 'member',

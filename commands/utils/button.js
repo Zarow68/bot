@@ -38,9 +38,7 @@ module.exports = {
     usage: 'button',
     examples: ['button'],
     description: 'button',
-    async run(client, message, args) {
-        await message.channel.send({ content: 'Cliquer les boutons', components: [buttons] });
-    },
+    
     async runInteraction (client, interaction) {
         await interaction.reply({ content: 'Cliquer les boutons', components: [buttons] });
     }

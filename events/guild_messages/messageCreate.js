@@ -1,5 +1,4 @@
-const ownerId = '934158263069593651';
-
+const ownerId = '1007935483382353930';
 module.exports = {
     name: 'messageCreate',
     once: false,

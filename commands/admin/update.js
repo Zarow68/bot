@@ -8,12 +8,11 @@ module.exports = {
     examples: ['update'],
     category: 'admin',
     description: 'Mettre à jour les nouvelles données !',
-    async run(client, message, args) {
-        await Guild.updateMany({}, { "$set": { "logChannel": "."}, upsert: true});
-        message.reply('Nouvelles données ajoutées !');
-    },
+    
     async runInteraction(client, interaction) {
         await Guild.updateMany({}, { "$set": { "logChannel": "."}, upsert: true});
-        interaction.reply('Nouvelles données ajoutées !');
-    }
+        await Guild.updateMany({}, { "$set": { "CaptchaChannel": "."}, upsert: true})
+        await Guild.updateMany({}, { "$set": { "WelcomeChannel": "."}, upsert: true})
+        interaction.reply({ content: `Nouvelles données ajoutées !`, ephemeral: true})
+    }     
 };

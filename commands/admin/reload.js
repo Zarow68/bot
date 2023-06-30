@@ -1,25 +1,20 @@
-const { Guild } = require('../../models/index')
+const { MessageEmbed} = require("discord.js");
 
 module.exports = {
     name: 'reload',
+    category: 'admin',
     permissions: ['ADMINISTRATOR'],
-    ownerOnly: true,
+    ownerOnly: false,
     usage: 'reload',
     examples: ['reload'],
-    category: 'admin',
-    description: 'Relancer le bot !',
-    async run(client, message, args) {
-        const devGuild = await client.guilds.cache.get('1034410084631064577');
-        devGuild.commands.set([]);
+    description: 'Relancé le bot !',
+    
+    async runInteraction (client, interaction) {
 
-        await message.reply('Bot relancé avec succès')
-        return process.exit()
-    },
-    async runInteraction(client, interaction) {
-        const devGuild = await client.guilds.cache.get('1034410084631064577');
-        devGuild.commands.set([]);
+        //const devGuild = await client.guilds.cache.get('1034410084631064577');
+         //devGuild.commands.set([]);
 
         await interaction.reply('Bot relancé avec succès')
-        return process.exit()
+        return process.exit();
     }
 };

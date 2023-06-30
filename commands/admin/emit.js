@@ -6,24 +6,7 @@ module.exports = {
     examples: ['emit', 'emit guildMemberAdd'],
     category: 'admin',
     description: 'Emettre un événement de votre choix !',
-    run: (client, message, args) => {
-        if (!args[0] || !args[0].match(/^(guildMemberAdd|guildMemberRemove)$/))
-        return message.reply(
-            'Merci d\'entrer un événement valide (\`guildMemberAdd\`/\`GuildMemberRemove\`)');
-
-        if (args[0] == 'guildMemberAdd') {
-            client.emit('guildMemberAdd', message.member);
-            message.reply('Event guildMemberAdd émit !')
-        } else if (args[0] == 'guildCreate') {
-
-            client.emit('guildCreate', message.guild);
-            message.reply('Event guildCreate émit !')
-
-        } else {
-            client.emit('guildMemberRemove', message.member);
-            interaction.reply({ content: 'Event guildMemberRemove émit !', ephemereal: true})
-        }
-    },
+    
     options: [
         {
             name: 'event',

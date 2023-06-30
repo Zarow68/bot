@@ -6,32 +6,7 @@ module.exports = {
     usage: 'clear [amount] <@target>',
     examples: ['clear 20', 'clear 20 @Zarow'],
     description: 'Supprimer des messages sur un salon ou un utilisateur',
-    async run(client, message, args) {
-        const amoutToDelete = args[0];
-        if (isNaN(amoutToDelete) || amoutToDelete > 100 || amoutToDelete < 2) return message.reply('Le \`NOMBRE\` doit être inférieur à 100 et supérieur à 1');
-        const target = message.mentions.users.find(u => u.id);
-        await message.delete();
-
-        const messagesToDelete = await message.channel.messages.fetch();
-
-        if (target) {
-            let i = 0;
-            const filteredTargetMessages = [];
-            (await messagesToDelete).filter(msg => {
-                if (msg.author.id == target.id && amoutToDelete > i) {
-                    filteredTargetMessages.push(msg); i++;
-                }
-            });
-
-            await message.channel.bulkDelete(filteredTargetMessages, true).then(messages => {
-                message.channel.send(`${messages.size} messages on été supprimé sur l'utilisateur ${target} !`);
-            });
-        } else {
-            await message.channel.bulkDelete(amoutToDelete, true).then(messages => {
-                message.channel.send(`${messages.size} messages on été supprimé sur le salon !`);
-            });
-        }
-    },
+    
     options: [
         {
             name: 'message',
@@ -70,7 +45,7 @@ module.exports = {
             });
         } else {
             await interaction.channel.bulkDelete(amoutToDelete, true).then(messages => {
-                interaction.reply(`${messages.size} messages on été supprimé sur le salon !`);
+                interaction.reply({content: `${messages.size} messages on été supprimé sur le salon !`, ephemeral: true});
             });
         }
         
