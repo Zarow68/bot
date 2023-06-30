@@ -1,7 +1,7 @@
 module.exports = {
     name: 'config',
     permissions: ['ADMINISTRATOR'],
-    ownerOnly: true,
+    ownerOnly: false,
     usage: 'config [key] <value>',
     examples: ['config', 'config prefix ?', 'config prefix'],
     category: 'admin',
@@ -18,10 +18,7 @@ module.exports = {
                     name: 'logChannel',
                     value: 'logChannel'
                 },
-                {
-                    name: 'CaptchaChannel',
-                    value: 'CaptchaChannel'
-                },
+
                 {
                     name: 'WelcomeChannel',
                     value: 'WelcomeChannel'
@@ -52,13 +49,6 @@ module.exports = {
                 await client.updateGuild(interaction.guild, { WelcomeChannel: value});
                 return interaction.reply({ content: `Nouvelle valeur de WelcomeChannel: ${value}`, ephemeral: true});
             }
-            interaction.reply({ content: `Valeur de WelcomeChannel: <#${guildSettings.WelcomeChannel}>`})
-        } else if (key == "CaptchaChannel") {
-            if (value) {
-                await client.updateGuild(interaction.guild, { CaptchaChannel: value});
-                return interaction.reply({ content: `Nouvelle valeur de CaptchaChannel: ${value}`, ephemeral: true});
-            }
-            interaction.reply({ content: `Valeur de CaptchaChannel: <#${guildSettings.CaptchaChannel}>`})
         }
         
          

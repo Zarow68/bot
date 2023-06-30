@@ -1,7 +1,7 @@
 module.exports = {
     name: 'emit',
     permissions: ['ADMINISTRATOR'],
-    ownerOnly: true,
+    ownerOnly: false,
     usage: 'emit [eventName]',
     examples: ['emit', 'emit guildMemberAdd'],
     category: 'admin',

@@ -3,7 +3,7 @@ const { Guild } = require('../../models/index')
 module.exports = {
     name: 'update',
     permissions: ['ADMINISTRATOR'],
-    ownerOnly: true,
+    ownerOnly: false,
     usage: 'update',
     examples: ['update'],
     category: 'admin',

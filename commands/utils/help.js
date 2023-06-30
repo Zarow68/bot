@@ -29,7 +29,7 @@ module.exports = {
         if (!cmdName) {
             const noArgsEmbed = new MessageEmbed()
             .setColor('#6e4aff')
-            .addField('Liste des commandes', `Une liste de toutes les catégories disponibles et leurs commandes. \nPour plus d\'informations sur une commande, taper \`/help <command>\``)
+            .addFields({ name: 'Liste des commandes', value: `Une liste de toutes les catégories disponibles et leurs commandes. \nPour plus d\'informations sur une commande, taper \`/help <command>\``})
 
             for (const category of commandFolder) {
                 noArgsEmbed.addField(

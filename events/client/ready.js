@@ -11,11 +11,11 @@ module.exports = {
 
         client.user.setPresence({ activities: [{ name: `VSCODE `, type: 'PLAYING' }], status: 'online' });
 
-         //const devGuild = await client.guilds.cache.get('1034410084631064577');
-         //devGuild.commands.set(client.commands.map(cmd => cmd));
+         const devGuild = await client.guilds.cache.get('1120292396408770591');
+         devGuild.commands.set(client.commands.map(cmd => cmd));
 
          //Global
-         client.application.commands.set(client.commands.map(cmd => cmd));
+         //client.application.commands.set(client.commands.map(cmd => cmd));
 
 
          
