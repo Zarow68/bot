@@ -15,7 +15,7 @@ module.exports = {
          //devGuild.commands.set(client.commands.map(cmd => cmd));
 
          //Global
-         client.applications.commands.set(client.commands.map(cmd => cmd));
+         client.application.commands.set(client.commands.map(cmd => cmd));
 
 
          
